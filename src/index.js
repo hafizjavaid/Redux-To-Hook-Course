@@ -4,10 +4,12 @@ import ReactDOM from 'react-dom';
 // import { combineReducers, createStore } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 
+// import configureStore
 import './index.css';
 import App from './App';
 // import productReducer from './store/reducers/products';
-import ProductsProvider from './context/products-context'
+// import ProductsProvider from './context/products-context'
+import configureStore from './hooks-store/products-store';
 
 // const rootReducer = combineReducers({
 //   shop: productReducer
@@ -15,13 +17,14 @@ import ProductsProvider from './context/products-context'
 
 // const store = createStore(rootReducer);
 
+configureStore();
 ReactDOM.render(
   // <Provider store={store}>
-    <ProductsProvider>
+    // <ProductsProvider>
       <BrowserRouter>
         <App />
-      </BrowserRouter>
-    </ProductsProvider>,
+      </BrowserRouter>,
+    // </ProductsProvider>,
   // </Provider>,
   document.getElementById('root')
 );
