@@ -1,14 +1,20 @@
 import React from 'react';
 import Card from '../UI/Card';
 import './ProductItem.css';
-import { ProductsContext } from "../../context/products-context";
-import { useContext } from 'react';
+import {  } from 'react';
+import { useStore } from '../../hooks-store/store';
 
-const ProductItem = props => {
-  const toggleFav = useContext(ProductsContext).toggleFav
+// Memo is used when want to avoid re-rendering 
+// if the props we are passing to component are not
+// updating
+const ProductItem = React.memo(props => {
+  const dispatch = useStore(false)[1];
+  console.log("RENDERING");
   const toggleFavHandler = () => {
    
-    toggleFav(props.id)
+    // toggleFav(props.id)
+
+    dispatch('TOGGLE_FAV', props.id)
 
   };
 
@@ -26,6 +32,6 @@ const ProductItem = props => {
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;
